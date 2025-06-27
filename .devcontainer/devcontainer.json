@@ -14,8 +14,8 @@
 	"forwardPorts": [3000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-  "postStartCommand": "bundle install && rails s -b 0.0.0.0",
-	"postCreateCommand": "bundle install && rails db:setup"
+  "postStartCommand": "bundle install && rails s -d -b 0.0.0.0",
+	"postCreateCommand": "bundle install && rails db:create"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

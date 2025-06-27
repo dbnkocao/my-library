@@ -23,6 +23,9 @@
   </head>
 
   <body>
+    <% if Current.session.present? %>
+      <%= button_to "Sign out", "/session", method: :delete %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

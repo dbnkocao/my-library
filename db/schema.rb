@@ -10,9 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_27_012752) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_28_015511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_authors_books_on_author_id"
+    t.index ["book_id"], name: "index_authors_books_on_book_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "isbn"
+    t.string "title"
+    t.string "subtitle"
+    t.string "publisher"
+    t.string "synopsis"
+    t.string "year"
+    t.string "format"
+    t.string "location"
+    t.string "cover_url"
+    t.string "provider"
+    t.string "width"
+    t.string "height"
+    t.string "unit"
+    t.integer "page_count"
+    t.float "retail_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books_subjects", id: false, force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "subject_id", null: false
+    t.index ["book_id"], name: "index_books_subjects_on_book_id"
+    t.index ["subject_id"], name: "index_books_subjects_on_subject_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,6 +61,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_27_012752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

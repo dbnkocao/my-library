@@ -15,7 +15,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
   "postStartCommand": "bundle install && rails s -d -b 0.0.0.0",
-	"postCreateCommand": "bundle install && rails db:create"
+	"postCreateCommand": "bundle install && rails db:setup"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

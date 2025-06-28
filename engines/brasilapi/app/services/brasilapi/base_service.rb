@@ -4,7 +4,7 @@ module Brasilapi
   class BaseService
     DOMAIN = 'https://brasilapi.com.br'
 
-    attr_reader :param, :response
+    attr_reader :param, :response, :result
 
     def self.call(param:)
       new(param: param).call
@@ -12,6 +12,7 @@ module Brasilapi
 
     def initialize(param:)
       @param = param
+      @result = Struct.new(:success, :data, :error)
     end
 
     private

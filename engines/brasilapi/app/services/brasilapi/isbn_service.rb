@@ -3,7 +3,7 @@ module Brasilapi
     def call
       request_data
 
-      { success: true, response: JSON.parse(response.body) }
+      result.new(success: true, data: JSON.parse(response.body))
     rescue RestClient::BadRequest
       { success: false, error: "Livro com o isbn #{param} não foi encontrado." }
     end

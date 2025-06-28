@@ -1,0 +1,17 @@
+<%= tag.div(flash[:notice], style: "color:red") if flash[:notice] %>
+
+<%= form_with url: books_path, method: :post do |form| %>
+  <%= form.label :isbn%>
+  <%= form.text_field :isbn %>
+  <%= form.submit "Add Book" %>
+
+<% end %>
+
+<h1>My Library</h1>
+<h2>Books</h2>
+
+<% @library.books.each do |book| %>
+<div>
+  <%= book.title %>
+</div>
+<% end %>

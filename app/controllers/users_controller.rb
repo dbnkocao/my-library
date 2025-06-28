@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      @user.create_library
       start_new_session_for @user
       redirect_to root_path, notice: "User created successfully."
     else

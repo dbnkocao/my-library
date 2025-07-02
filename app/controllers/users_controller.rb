@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
     @user.address = Address.new if @user.address.nil?
+
+    search_address if params[:zipcode].present?
   end
 
   def update
@@ -33,6 +35,17 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def search_address
+    result = Brasilapi::CepService.call(param: params[:zipcode])
+
+    if result[:success]
+      @user.address.zipcode = params[:zipcode]
+      @user.address.assign_attributes(result[:response].except("cep", "service"))
+    else
+      flash.now[:error] = result[:error]
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email_address, :password)

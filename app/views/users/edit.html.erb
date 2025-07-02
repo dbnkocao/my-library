@@ -1,8 +1,16 @@
+<%= form_with url: edit_users_path(@user), method: :get do |form| %>
+  <div>
+    <%= form.label :zipcode, "Search Zipcode" %>
+    <%= form.text_field :zipcode, value: nil, placeholder: "Enter Zipcode" %>
+    <%= form.submit "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
 <%= form_with url: users_path, model: @user, method: :patch do |form| %>
   <%= form.fields_for :address do |address|%>
     <div>
       <%= address.label :zipcode %>
       <%= address.text_field :zipcode %>
+      <%= button_to "Search Zipcode", edit_users_path, method: :get, params: { zipcode: address.object.zipcode }, remote: true, class: "btn btn-primary" %>
     </div>
     <div>
       <%= address.label :street %>

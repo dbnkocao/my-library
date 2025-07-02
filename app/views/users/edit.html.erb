@@ -1,0 +1,28 @@
+<%= form_with url: users_path, model: @user, method: :patch do |form| %>
+  <%= form.fields_for :address do |address|%>
+    <div>
+      <%= address.label :zipcode %>
+      <%= address.text_field :zipcode %>
+    </div>
+    <div>
+      <%= address.label :street %>
+      <%= address.text_field :street %>
+    </div>
+    <div>
+      <%= address.label :city %>
+      <%= address.text_field :city %>
+    </div>
+    <div>
+      <%= address.label :state %>
+      <%= address.text_field :state %>
+    </div>
+    <div>
+      <%= address.label :neighborhood %>
+      <%= address.text_field :neighborhood %>
+    </div>
+
+    <div>
+      <%= form.submit "Update Information "%>
+    </div>
+  <% end %>
+<% end %>

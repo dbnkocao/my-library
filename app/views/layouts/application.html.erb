@@ -25,6 +25,7 @@
   <body>
     <% if Current.session.present? %>
       <%= button_to "Sign out", "/session", method: :delete %>
+      <%= button_to "Personal Information", edit_users_path, method: :get %>
     <% end %>
     <%= yield %>
   </body>

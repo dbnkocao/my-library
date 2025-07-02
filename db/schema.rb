@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_28_154829) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_30_022815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "zipcode"
+    t.string "state"
+    t.string "city"
+    t.string "neighborhood"
+    t.string "street"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -91,6 +103,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_28_154829) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "libraries", "users"
   add_foreign_key "sessions", "users"
 end

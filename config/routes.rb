@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resource :session
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create] do
+    get :edit, on: :collection
+    patch :update, on: :collection
+  end
   resources :books, only: :create
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

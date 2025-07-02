@@ -16,6 +16,7 @@
       <th>Title</th>
       <th>Authors</th>
       <th>Subjects</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,9 @@
         <td><%= book.title %></td>
         <td><%= book.authors.pluck(:name).join(", ") %></td>
         <td><%= book.subjects.pluck(:description).join(", ") %></td>
+        <td>
+          <%= button_to "Excluir", delete_book_libraries_path(book), method: :delete %>
+        </td>
       </tr>
     <% end %>
   </tbody>

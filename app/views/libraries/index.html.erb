@@ -10,8 +10,21 @@
 <h1>My Library</h1>
 <h2>Books</h2>
 
-<% @library.books.each do |book| %>
-<div>
-  <%= book.title %>
-</div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Subjects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @library.books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.authors.pluck(:name).join(", ") %></td>
+        <td><%= book.subjects.pluck(:description).join(", ") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

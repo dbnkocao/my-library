@@ -10,7 +10,6 @@
     <div>
       <%= address.label :zipcode %>
       <%= address.text_field :zipcode %>
-      <%= button_to "Search Zipcode", edit_users_path, method: :get, params: { zipcode: address.object.zipcode }, remote: true, class: "btn btn-primary" %>
     </div>
     <div>
       <%= address.label :street %>

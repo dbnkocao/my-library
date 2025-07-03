@@ -7,11 +7,12 @@ class BookPriceSearchJob < ApplicationJob
   PRODUCT_SELECTOR = '[data-testid=\"product-card\:\:name\"]'.freeze
   URL = "https://www.zoom.com.br".freeze
 
-  def perform(book_id)
+  def perform(book_id, user_id)
     @book = Book.find(book_id)
 
     search
     create_search_prices
+    SearchPricesMailer.list_prices(user_id, book_id).deliver_later
   rescue OpenURI::HTTPError => e
     Rails.logger.error "Error accessing the URL: #{e.message}"
     Rails.logger.error "Please ensure the URL is correct and accessible."
@@ -30,11 +31,13 @@ class BookPriceSearchJob < ApplicationJob
 
   def search_prices
     @search_prices ||= search_prices_elements.map do |element|
+      link = element.attribute("href")&.value&.strip
+      link = [URL, link].join if link.present? && !link.start_with?('http')
       {
         book_id: book.id,
         price: element.at_css(PRICE_SELECTOR)&.text&.strip,
         product: element.at_css(PRODUCT_SELECTOR)&.text&.strip,
-        link: element.attribute("href")&.value&.strip,
+        link: link,
         image_link: element.at_css('img')&.attribute('src')&.value&.strip
       }
     end

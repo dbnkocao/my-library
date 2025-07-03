@@ -1,4 +1,6 @@
 class LibrariesController < ApplicationController
+  include Authentication
+
   before_action :set_library
 
   def index

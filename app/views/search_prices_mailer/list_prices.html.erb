@@ -1,0 +1,10 @@
+<% @book.search_prices.each do |search_price| %>
+  <div>
+    <p><strong>Product:</strong> <%= search_price.product %></p>
+    <p><img src="<%= search_price.image_link %>"></p>
+    <p><strong>Price:</strong> <%= search_price.price %></p>
+    <p><strong>Link:</strong><a href="<%= search_price.link %>" target="_blank">Link</a></p>
+    <p><strong>Last Updated:</strong> <%= search_price.updated_at.strftime("%B %d, %Y") %></p>
+  </div>
+  <hr>
+<% end %>

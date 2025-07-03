@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include Authentication
   allow_unauthenticated_access only: %i[new create]
 
   def create

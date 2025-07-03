@@ -12,8 +12,7 @@ class CreateBookByIsbnService < ApplicationJob
   def call
     @result = Brasilapi::IsbnService.call(param: isbn)
 
-    return unless result.success
-
+    return book unless success_result?
     create_book
     add_authors
     add_subjects
@@ -21,6 +20,14 @@ class CreateBookByIsbnService < ApplicationJob
   end
 
   private
+
+  def success_result?
+    return true if result.success
+
+    @book = Book.new
+    book.errors.add(:isbn, result.error)
+    return false
+  end
 
   def create_book
     book_params = result.data.except("authors", "subjects","dimensions")

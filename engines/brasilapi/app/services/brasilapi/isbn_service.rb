@@ -5,7 +5,7 @@ module Brasilapi
 
       result.new(success: true, data: JSON.parse(response.body))
     rescue RestClient::BadRequest
-      { success: false, error: "Livro com o isbn #{param} não foi encontrado." }
+      result.new(success: false, error: "Livro com o isbn #{param} não foi encontrado.")
     end
 
     private

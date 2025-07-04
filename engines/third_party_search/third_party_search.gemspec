@@ -1,13 +1,13 @@
-require_relative "lib/brasilapi/version"
+require_relative "lib/third_party_search/version"
 
 Gem::Specification.new do |spec|
-  spec.name        = "brasilapi"
+  spec.name        = "third_party_search"
   spec.version     = Brasilapi::VERSION
   spec.authors     = [ "Daniel Nascimento" ]
   spec.email       = [ "dbnkocao@gmail.com" ]
   spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Brasilapi."
-  spec.description = "TODO: Description of Brasilapi."
+  spec.summary     = "TODO: Summary of ThirdPartySearch."
+  spec.description = "TODO: Description of ThirdPartySearch."
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
   # to allow pushing to a single host or delete this section to allow pushing to any host.

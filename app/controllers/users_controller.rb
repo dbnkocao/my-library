@@ -38,11 +38,11 @@ class UsersController < ApplicationController
   private
 
   def search_address
-    result = Brasilapi::CepService.call(param: params[:zipcode])
+    result = ThirdPartySearch::Brasilapi::CepService.call(param: params[:zipcode])
 
-    if result[:success]
+    if result.success
       @user.address.zipcode = params[:zipcode]
-      @user.address.assign_attributes(result[:response].except("cep", "service"))
+      @user.address.assign_attributes(result.data.except("cep", "service"))
     else
       flash.now[:error] = result[:error]
     end

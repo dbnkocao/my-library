@@ -59,6 +59,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem 'seed_dump'
 end
 
 group :test do
@@ -67,4 +69,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "brasilapi", path: "engines/brasilapi"
+gem "third_party_search", path: "engines/third_party_search"

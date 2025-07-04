@@ -10,7 +10,7 @@ class CreateBookByIsbnService < ApplicationJob
   end
 
   def call
-    @result = Brasilapi::IsbnService.call(param: isbn)
+    @result = ThirdPartySearch::Brasilapi::IsbnService.call(param: isbn)
 
     return book unless success_result?
     create_book

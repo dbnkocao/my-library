@@ -1,7 +1,7 @@
 PATH
-  remote: engines/brasilapi
+  remote: engines/third_party_search
   specs:
-    brasilapi (0.1.0)
+    third_party_search (0.1.0)
       rails (>= 8.0.2)
       rest-client
 
@@ -318,6 +318,9 @@ GEM
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     securerandom (0.4.1)
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     selenium-webdriver (4.33.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -395,7 +398,6 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
-  brasilapi!
   capybara
   debug
   importmap-rails
@@ -409,11 +411,13 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.2)
   rubocop-rails-omakase
+  seed_dump
   selenium-webdriver
   solid_cable
   solid_cache
   solid_queue
   stimulus-rails
+  third_party_search!
   thruster
   turbo-rails
   tzinfo-data

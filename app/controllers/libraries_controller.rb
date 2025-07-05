@@ -4,7 +4,9 @@ class LibrariesController < ApplicationController
   before_action :set_library
 
   def index
-    @library = current_user.library
+    @books = Rails.cache.fetch("#{@library.id}/search_prices", expires_in: 1.hour) do
+      @library.books.includes(:authors, :subjects, :search_prices)
+    end
   end
 
   def delete_book

@@ -17,10 +17,11 @@
       <th>Authors</th>
       <th>Subjects</th>
       <th>Actions</th>
+      <th>Price Search</th>
     </tr>
   </thead>
   <tbody>
-    <% @library.books.each do |book| %>
+    <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
         <td><%= book.authors.pluck(:name).join(", ") %></td>
@@ -29,6 +30,18 @@
           <%= button_to "Delete", delete_book_libraries_path(book), method: :delete %>
           <%= button_to "Serch Prices", book_search_prices_path(book), method: :post %>
         </td>
+        <td>
+          <% if book.search_prices.any? %>
+            <ul>
+              <% book.search_prices.each do |search_price| %>
+                <li>
+                  <a href="<%= search_price.link %>" target="_blank"><%= search_price.product %>: <%= search_price.price %></a>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            No prices found.
+          <% end %>
       </tr>
     <% end %>
   </tbody>

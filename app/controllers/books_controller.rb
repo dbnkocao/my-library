@@ -4,10 +4,15 @@ class BooksController < ApplicationController
   def index; end
 
   def create
-    book = Book.find_by(isbn: params[:isbn]) || ::CreateBookByIsbnService.call(params[:isbn])
+    result = ::CreateBookByIsbnService.call(isbn: params[:isbn])
 
-    flash[:notice] = book.errors.full_messages.to_sentence if book.errors.any?
-    library_books << book if book.persisted? && !library_books.include?(book)
+    if result.success?
+      book = result.value[:book] if result.success?
+      library_books << book if book.persisted? && !library_books.include?(book)
+      flash[:notice] = "Book '#{book.title}' added successfully."
+    else
+      flash[:notice] = result.value[:errors]
+    end
 
     redirect_to root_path
   end
@@ -18,7 +23,6 @@ class BooksController < ApplicationController
     flash[:notice] = "Searching for prices, you will receive an email with the results."
     redirect_to root_path
   end
-
 
   private
 

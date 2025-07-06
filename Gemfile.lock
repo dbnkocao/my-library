@@ -327,6 +327,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    solid-process (0.4.0)
+      activemodel (>= 6.0)
+      solid-result (~> 2.0)
+    solid-result (2.0.0)
     solid_cable (3.0.10)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -413,6 +417,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   seed_dump
   selenium-webdriver
+  solid-process
   solid_cable
   solid_cache
   solid_queue

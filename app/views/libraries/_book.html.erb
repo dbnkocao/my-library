@@ -1,0 +1,15 @@
+<tr>
+  <td><%= book.isbn %></td>
+  <td><%= book.title %></td>
+  <td><%= book.authors.map(&:name).join(", ") %></td>
+  <td><%= book.subjects.map(&:description).join(", ") %></td>
+  <td>
+    <%= button_to "Delete", delete_book_libraries_path(book), method: :delete %>
+    <%= button_to "Serch Prices", book_search_prices_path(book), method: :post %>
+  </td>
+  <td>
+    <ul>
+      <%= render partial: 'libraries/search_price', collection: book.search_prices, cached: true %>
+    </ul>
+  </td>
+</tr>

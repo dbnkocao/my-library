@@ -11,7 +11,7 @@ class CreateBookByIsbnService < Solid::Process
         .and_then(:create_book)
         .and_then(:add_authors)
         .and_then(:add_subjects)
-    }.and_expose(:book_created, [:book])
+    }.and_expose(:book_created, [ :book ])
   end
 
   private
@@ -33,7 +33,7 @@ class CreateBookByIsbnService < Solid::Process
   end
 
   def create_book(data:, **)
-    book_params = data.except("authors", "subjects","dimensions")
+    book_params = data.except("authors", "subjects", "dimensions")
     book_params.merge!(data["dimensions"]) if data["dimensions"]
     book = Book.new(book_params)
 

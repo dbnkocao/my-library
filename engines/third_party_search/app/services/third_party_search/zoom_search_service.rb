@@ -17,7 +17,7 @@ module ThirdPartySearch
 
     def call
       search
-      return search_prices
+      search_prices
     rescue OpenURI::HTTPError => e
       Rails.logger.error "Error accessing the URL: #{e.message}"
       Rails.logger.error "Please ensure the URL is correct and accessible."
@@ -37,12 +37,12 @@ module ThirdPartySearch
     def search_prices
       search_prices_elements.map do |element|
         link = element.attribute("href")&.value&.strip
-        link = [URL, link].join if link.present? && !link.start_with?('http')
+        link = [ URL, link ].join if link.present? && !link.start_with?("http")
         {
           price: element.at_css(PRICE_SELECTOR)&.text&.strip,
           product: element.at_css(PRODUCT_SELECTOR)&.text&.strip,
           link: link,
-          image_link: element.at_css('img')&.attribute('src')&.value&.strip
+          image_link: element.at_css("img")&.attribute("src")&.value&.strip
         }
       end
     end
@@ -57,7 +57,7 @@ module ThirdPartySearch
           q: book_title,
           hitsPerPage: 24,
           page: 1,
-          sortBy: 'price_asc',
+          sortBy: "price_asc",
           isDealsPage: false,
           enableRefinementsSuggestions: true
         }

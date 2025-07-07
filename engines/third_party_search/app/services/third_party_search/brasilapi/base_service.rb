@@ -1,8 +1,8 @@
-require 'rest-client'
+require "rest-client"
 module ThirdPartySearch
   module Brasilapi
     class BaseService
-      DOMAIN = 'https://brasilapi.com.br'
+      DOMAIN = "https://brasilapi.com.br"
 
       attr_reader :param, :response, :result
 
@@ -22,7 +22,7 @@ module ThirdPartySearch
       end
 
       def url
-        raise NotImplementedError, 'You must implement the url method in the subclass'
+        raise NotImplementedError, "You must implement the url method in the subclass"
       end
     end
   end

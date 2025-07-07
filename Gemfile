@@ -40,12 +40,12 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 
-gem 'nokogiri'
-gem 'open-uri' # For fetching web pages
+gem "nokogiri"
+gem "open-uri" # For fetching web pages
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'solid-process'
+gem "solid-process"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -62,7 +62,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
-  gem 'seed_dump'
+  gem "seed_dump"
 end
 
 group :test do

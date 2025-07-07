@@ -54,14 +54,14 @@ Lugares utilizados:
 * Serviço que busca endereço por CEP (engines/app/services/brasilapi/cep_service.rb)
 * Serviço que busca preços no zoom (engines/app/services/zoom_search_service.rb)
 ### 2. **ActiveJob + Solid queue**
-Usado para processamento assíncrono de tarefas demoradas, evitando de travar a navegação do usuário, durante as tarefas que poderiam ser mais lentas.
+Usado para processamento assíncrono de tarefas demoradas, evitando travar a navegação do usuário, durante as tarefas que poderiam ser mais lentas.
 
 Lugares utilizados:
 * Job que busca os livros pelo zoom.(app/jobs/book_price_search_job.rb)
 * Envio de email informando os menore Preços.(app/mailers/search_prices_mailer.rb)
 
 ### 3. **Engines**
-Utilizei esse conceito para encapsular as consultas a outros sites ou APIs, fazendo com que as consultas possam ser reutilizadas fácilmente em outros projetos.
+Utilizei esse conceito para encapsular as consultas a outros sites ou APIs, fazendo com que as consultas possam ser reutilizadas facilmente em outros projetos.
 
 Lugares utilizados:
 * ThidPartyEngine (engines/third_party_engine)

@@ -27,7 +27,7 @@ class CreateBookByIsbnService < Solid::Process
 
     result = ThirdPartySearch::Brasilapi::IsbnService.call(param: isbn)
 
-    Continue(data: result.data) if result.success
+    return Continue(data: result.data) if result.success
 
     Failure(:book_not_found, errors: result.error)
   end
@@ -37,7 +37,7 @@ class CreateBookByIsbnService < Solid::Process
     book_params.merge!(data["dimensions"]) if data["dimensions"]
     book = Book.new(book_params)
 
-    Continue(data:, book:) if book.save
+    return Continue(data:, book:) if book.save
 
     Failure(:invalid_input, errors: book.errors.full_messages)
   end

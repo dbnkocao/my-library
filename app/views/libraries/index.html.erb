@@ -26,24 +26,17 @@
       <tr>
         <td><%= book.isbn %></td>
         <td><%= book.title %></td>
-        <td><%= book.authors.pluck(:name).join(", ") %></td>
-        <td><%= book.subjects.pluck(:description).join(", ") %></td>
+        <td><%= book.authors.map(&:name).join(", ") %></td>
+        <td><%= book.subjects.map(&:description).join(", ") %></td>
         <td>
           <%= button_to "Delete", delete_book_libraries_path(book), method: :delete %>
           <%= button_to "Serch Prices", book_search_prices_path(book), method: :post %>
         </td>
         <td>
-          <% if book.search_prices.any? %>
-            <ul>
-              <% book.search_prices.each do |search_price| %>
-                <li>
-                  <a href="<%= search_price.link %>" target="_blank"><%= search_price.product %>: <%= search_price.price %></a>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            No prices found.
-          <% end %>
+          <ul>
+            <%= render partial: 'libraries/search_price', collection: book.search_prices, cached: true %>
+          </ul>
+        </td>
       </tr>
     <% end %>
   </tbody>

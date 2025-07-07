@@ -4,9 +4,7 @@ class LibrariesController < ApplicationController
   before_action :set_library
 
   def index
-    @books = Rails.cache.fetch("library_#{@library.id}", expires_in: 1.hour) do
-      @library.books.includes(:authors, :subjects, :search_prices)
-    end
+    @books = @library.books.includes(:subjects, :authors, :search_prices)
   end
 
   def delete_book
@@ -14,7 +12,7 @@ class LibrariesController < ApplicationController
 
     @library.books.delete(book)
 
-    redirect_to root_path, notice: "Book '#{book.title}'deleted with success."
+    redirect_to root_path, notice: "Book '#{book.title}' deleted with success."
   end
 
   private

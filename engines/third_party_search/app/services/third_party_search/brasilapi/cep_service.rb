@@ -6,7 +6,7 @@ module ThirdPartySearch
 
         result.new(success: true, data: JSON.parse(response.body))
       rescue RestClient::BadRequest, RestClient::GatewayTimeout, RestClient::NotFound
-        result.new(success: false, error: "Endereço com o cep #{param} não foi encontrado.")
+        result.new(success: false, error: "Address with zipcode #{param} not found.")
       end
 
       private

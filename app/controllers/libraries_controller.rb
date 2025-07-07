@@ -20,6 +20,6 @@ class LibrariesController < ApplicationController
   def set_library
     @library = current_user.library
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "Library not found."
+    redirect_to root_path, error: "Library not found."
   end
 end

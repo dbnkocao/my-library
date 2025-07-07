@@ -5,11 +5,17 @@
   <td><%= book.authors.map(&:name).join(", ") %></td>
   <td><%= book.subjects.map(&:description).join(", ") %></td>
   <td>
-    <%= button_to "Delete", delete_book_libraries_path(book), method: :delete, class: "btn btn-danger" %>
-    <%= button_to "Serch Prices", book_search_prices_path(book), method: :post, class: "btn btn-success" %>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#prices-book-<%= book.id %>">
-      Prices
-    </button>
+    <div class="d-flex flex-row justify-content-between">
+      <%= button_to book_search_prices_path(book), method: :post, class: "btn btn-success" do %>
+        <i class="bi bi-search"></i>
+      <% end %>
+      <button type="button" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#prices-book-<%= book.id %>">
+        <i class="bi bi-currency-dollar"></i>
+      </button>
+      <%= button_to delete_book_libraries_path(book), method: :delete, class: "btn btn-danger ms-1" do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
+    </div>
   </td>
   <td>
   </td>

@@ -6,7 +6,7 @@ module ThirdPartySearch
 
         result.new(success: true, data: JSON.parse(response.body))
       rescue RestClient::BadRequest
-        result.new(success: false, error: "Livro com o isbn #{param} não foi encontrado.")
+        result.new(success: false, error: "Book with isbn #{param} not found.")
       end
 
       private

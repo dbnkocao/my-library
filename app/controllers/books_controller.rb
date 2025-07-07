@@ -11,7 +11,7 @@ class BooksController < ApplicationController
       library_books << book if book.persisted? && !library_books.include?(book)
       flash[:notice] = "Book '#{book.title}' added successfully."
     else
-      flash[:notice] = result.value[:errors]
+      flash[:error] = result.value[:errors]
     end
 
     redirect_to root_path

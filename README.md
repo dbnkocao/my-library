@@ -15,6 +15,8 @@ Este é um projeto desenvolvido como parte do curso de Ruby on Rails. O objetivo
 - [Ruby](https://www.ruby-lang.org/pt/) 3.4.4
 - [Ruby on Rails](https://rubyonrails.org/) 8.0.2
 - [PostgreSQL](https://www.postgresql.org/) 17
+- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) 5.0.2
+- [Bootstrap Icons](https://icons.getbootstrap.com/) 1.13.1
 
 ## 🚀 Como rodar o projeto localmente
 
@@ -26,6 +28,13 @@ cd my-library
 # abra o VSCode
 # Inicie o projeto dentro do dev container
 ```
+Ao iniciar o projeto será criado o seguinte usuário:
+
+**usuário:** user@email.com
+
+**senha:** 123456
+
+Que terá alguns livros adicionados de exemplo a sua biblioteca. Também é possível criar novos usuários através do botão **sign up**.
 
 ## ✅ Funcionalidades implementadas
 * Criação de usuário e sua respectiva biblioteca

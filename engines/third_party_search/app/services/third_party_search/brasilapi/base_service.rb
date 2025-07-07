@@ -11,7 +11,7 @@ module ThirdPartySearch
       end
 
       def initialize(param:)
-        @param = param
+        @param = param.gsub(/[^0-9]/, "")
         @result = Struct.new(:success, :data, :error)
       end
 
